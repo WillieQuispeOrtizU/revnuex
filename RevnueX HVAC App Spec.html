@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RevnueX — HVAC Near Me Now · Mobile App Spec</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="spec.css"/>
+<style>
+  body { background: #000; }
+  deck-stage { background: #000; }
+  deck-stage::part(stage) { background: #000; }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080" aspect="16/9">
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 01 · COVER                                                   -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section data-screen-label="01 Cover">
+  <div class="slide full" style="background: radial-gradient(1200px 800px at 30% 30%, rgba(255,106,26,0.18), transparent 60%), #0A0B0D; padding: 96px 120px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div style="width: 42px; height: 42px; border-radius: 12px; background: linear-gradient(135deg, #FF8A3A, #C43E04); display: grid; place-items: center; color: white; font-family: 'Geist', sans-serif; font-weight: 800; font-size: 22px; box-shadow: 0 8px 24px rgba(255,106,26,0.4);">R</div>
+      <div>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--ember-300); letter-spacing: 0.15em; text-transform: uppercase;">RevnueX</div>
+        <div style="font-size: 14px; color: var(--ink-2); margin-top: 2px;">Revenue infrastructure for HVAC contractors</div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-family: 'Geist Mono', monospace; font-size: 14px; color: var(--ember-500); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px;">Mobile App · Design Specification v1.0</div>
+      <h1 style="font-family: 'Geist', sans-serif; font-weight: 800; font-size: 128px; line-height: 0.95; letter-spacing: -0.035em; color: var(--ink-0); margin: 0; max-width: 1500px;">
+        HVAC <span style="color: var(--ember-500);">Near&nbsp;Me</span> Now.
+      </h1>
+      <p style="font-size: 22px; line-height: 1.5; color: var(--ink-1); max-width: 720px; margin: 32px 0 0;">
+        Hi-fi requirements doc for a dual-role mobile app — Owner dashboard and Tech field tool — built around a single closed loop:
+        <span style="color: var(--ember-300);">lead → AI call → dispatch → job → payment.</span>
+      </p>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-top: 32px; border-top: 1px solid var(--line-soft);">
+      <div style="display: flex; gap: 48px;">
+        <div>
+          <div style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.1em; text-transform: uppercase;">For</div>
+          <div style="font-size: 16px; color: var(--ink-0); margin-top: 4px;">Hi-FI pass</div>
+        </div>
+        <div>
+          <div style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.1em; text-transform: uppercase;">From</div>
+          <div style="font-size: 16px; color: var(--ink-0); margin-top: 4px;">Diego Vences · founder, RevnueX</div>
+        </div>
+        <div>
+          <div style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.1em; text-transform: uppercase;">Platforms</div>
+          <div style="font-size: 16px; color: var(--ink-0); margin-top: 4px;">iOS + Android · EN/ES</div>
+        </div>
+        <div>
+          <div style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.1em; text-transform: uppercase;">Date</div>
+          <div style="font-size: 16px; color: var(--ink-0); margin-top: 4px;">May 1, 2026</div>
+        </div>
+      </div>
+      <div style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--ink-2); letter-spacing: 0.05em;">24 sections · 32 pages</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 02 · TABLE OF CONTENTS                                       -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section data-screen-label="02 Contents">
+  <div class="slide full" style="padding: 80px 120px; display: flex; flex-direction: column; gap: 40px;">
+    <div>
+      <div style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--ember-500); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px;">Contents</div>
+      <h1 style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 64px; line-height: 1.05; letter-spacing: -0.025em; margin: 0;">What's in this spec</h1>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 64px;">
+      <div>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ember-300); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;">I · Foundation</div>
+        <ol style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 16px; color: var(--ink-1);">
+          <li>03 · Product summary &amp; closed loop</li>
+          <li>04 · Brand &amp; visual language</li>
+          <li>05 · Type system</li>
+          <li>06 · Color &amp; ember semantics</li>
+          <li>07 · Component inventory</li>
+          <li>08 · Information architecture</li>
+        </ol>
+      </div>
+      <div>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ember-300); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;">II · Owner app</div>
+        <ol style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 16px; color: var(--ink-1);">
+          <li>09 · Onboarding flow</li>
+          <li>10 · Live dispatch map ★</li>
+          <li>11 · Lead detail · AI call live ★</li>
+          <li>12 · Revenue dashboard ★</li>
+          <li>13 · Notifications inbox</li>
+          <li>14 · AI voice agent settings</li>
+          <li>15 · Founder slot &amp; billing ★</li>
+          <li>16 · First Job or Free tracker ★</li>
+        </ol>
+      </div>
+      <div>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ember-300); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;">III · Tech &amp; customer</div>
+        <ol style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 16px; color: var(--ink-1);">
+          <li>17 · Tech today (job list)</li>
+          <li>18 · Job detail &amp; checklist</li>
+          <li>19 · Estimate builder</li>
+          <li>20 · Invoice &amp; payment</li>
+          <li>21 · Customer track-my-tech</li>
+          <li style="color: var(--ink-2); padding-top: 12px; border-top: 1px solid var(--line-soft); margin-top: 8px;">— Cross-cutting —</li>
+          <li>22 · EN/ES bilingual handling</li>
+          <li>23 · Empty / loading / error states</li>
+          <li>24 · Push notifications</li>
+          <li>25 · Motion &amp; accessibility</li>
+          <li>26 · Handoff checklist</li>
+        </ol>
+      </div>
+    </div>
+    <div style="margin-top: auto; font-size: 13px; color: var(--ink-2); display: flex; gap: 8px; align-items: center;">
+      <span style="color: var(--ember-500);">★</span> Hero moments — invest extra design time on these.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 03 · PRODUCT SUMMARY / CLOSED LOOP                           -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section data-screen-label="03 Closed loop">
+  <div class="slide full" style="padding: 80px 120px;">
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+      <span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--ember-500); letter-spacing: 0.1em;">03</span>
+      <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--ink-2); letter-spacing: 0.1em; text-transform: uppercase;">Foundation · Product summary</span>
+    </div>
+    <h1 style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 56px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 20px; max-width: 1200px;">Every screen serves one closed loop.</h1>
+    <p style="font-size: 18px; line-height: 1.6; color: var(--ink-1); max-width: 900px; margin: 0 0 56px;">
+      The marketing site sells a promise: <em style="color: var(--ember-300); font-style: normal;">money stops leaking through unanswered phones.</em> The app must make that promise visible and continuous. Every screen should answer "what's the next dollar?" within 2–3 seconds.
+    </p>
+
+    <!-- Loop diagram -->
+    <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-bottom: 56px;">
+      <div class="loop-step" style="position: relative;">
+        <div style="padding: 24px; border-radius: 20px; background: var(--bg-1); border: 1px solid var(--line); height: 160px; display: flex; flex-direction: column; justify-content: space-between;">
+          <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.1em;">01</span>
+          <div>
+            <div style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 22px; color: var(--ember-500);">Lead</div>
+            <div style="font-size: 13px; color: var(--ink-2); margin-top: 6px;">Web form pin or missed call</div>
+          </div>
+        </div>
+      </div>
+      <div class="loop-step">
+        <div style="padding: 24px; border-radius: 20px; background: var(--bg-1); border: 1px solid var(--line); height: 160px; display: flex; flex-direction: column; justify-content: space-between;">
+          <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.1em;">02</span>
+          <div>
+            <div style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 22px; color: var(--ember-500);">AI call</div>
+            <div style="font-size: 13px; color: var(--ink-2); margin-top: 6px;">Iris dials in &lt; 60s</div>
+          </div>
+        </div>
+      </div>
+      <div class="loop-step">
+        <div style="padding: 24px; border-radius: 20px; background: var(--bg-1); border: 1px solid var(--line); height: 160px; display: flex; flex-direction: column; justify-content: space-between;">
+          <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.1em;">03</span>
+          <div>
+            <div style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 22px; color: var(--ember-500);">Qualify</div>
+            <div style="font-size: 13px; color: var(--ink-2); margin-top: 6px;">Urgency + window</div>
+          </div>
+        </div>
+      </div>
+      <div class="loop-step">
+        <div style="padding: 24px; border-radius: 20px; background: var(--bg-1); border: 1px solid var(--line); height: 160px; display: flex; flex-direction: column; justify-content: space-between;">
+          <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.1em;">04</span>
+          <div>
+            <div style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 22px; color: var(--ember-500);">Dispatch</div>
+            <div style="font-size: 13px; color: var(--ink-2); margin-top: 6px;">Nearest tech routed</div>
+          </div>
+        </div>
+      </div>
+      <div class="loop-step">
+        <div style="padding: 24px; border-radius: 20px; background: var(--bg-1); border: 1px solid var(--line); height: 160px; display: flex; flex-direction: column; justify-content: space-between;">
+          <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.1em;">05</span>
+          <div>
+            <div style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 22px; color: var(--ember-500);">Job</div>
+            <div style="font-size: 13px; color: var(--ink-2); margin-top: 6px;">Estimate + checklist</div>
+          </div>
+        </div>
+      </div>
+      <div class="loop-step">
+        <div style="padding: 24px; border-radius: 20px; background: linear-gradient(160deg, rgba(43,210,122,0.1), var(--bg-1)); border: 1px solid rgba(43,210,122,0.3); height: 160px; display: flex; flex-direction: column; justify-content: space-between;">
+          <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ok); letter-spacing: 0.1em;">06</span>
+          <div>
+            <div style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 22px; color: var(--ok);">Paid</div>
+            <div style="font-size: 13px; color: var(--ink-2); margin-top: 6px;">Tap to pay · revenue ticks</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillars -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+      <div class="prd-block">
+        <h4>Design pillars</h4>
+        <p style="font-size: 14px; color: var(--ink-1); line-height: 1.5; margin: 4px 0 0;"><strong style="color: var(--ember-300);">Speed.</strong> Every primary action is one tap from the home screen. No nested menus.</p>
+      </div>
+      <div class="prd-block">
+        <h4>Voice</h4>
+        <p style="font-size: 14px; color: var(--ink-1); line-height: 1.5; margin: 4px 0 0;"><strong style="color: var(--ember-300);">Money is alive.</strong> Counters tick. Pulses on live items. Revenue is the headline of every screen it can be.</p>
+      </div>
+      <div class="prd-block">
+        <h4>Restraint</h4>
+        <p style="font-size: 14px; color: var(--ink-1); line-height: 1.5; margin: 4px 0 0;"><strong style="color: var(--ember-300);">Dark-first, ember-as-signal.</strong> Color earns its place. If it's ember, it's actionable or urgent.</p>
+      </div>
+      <div class="prd-block">
+        <h4>Audience</h4>
+        <p style="font-size: 14px; color: var(--ink-1); line-height: 1.5; margin: 4px 0 0;"><strong style="color: var(--ember-300);">Not enterprise.</strong> Contractor in a truck cab on a 5" screen at noon, sweat on the glass.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="mobile/primitives.jsx"></script>
+<script type="text/babel" src="mobile/owner-screens.jsx"></script>
+<script type="text/babel" src="mobile/owner-screens-2.jsx"></script>
+<script type="text/babel" src="mobile/tech-screens.jsx"></script>
+<script type="text/babel" src="slides-foundation.jsx"></script>
+<script type="text/babel" src="slides-screens.jsx"></script>
+<script type="text/babel" src="slides-tech.jsx"></script>
+<script type="text/babel" src="slides.jsx"></script>
+
+</body>
+</html>

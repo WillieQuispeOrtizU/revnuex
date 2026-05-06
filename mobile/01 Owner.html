@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>RevnueX · Owner App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../mockup-tokens.css"/>
+<style>body { background: #f0eee9; }</style>
+</head>
+<body>
+
+<div id="root"></div>
+<script src="_shared.js"></script>
+<script>window.__mockupToolbar('Owner app · iOS');</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="../design-canvas.jsx"></script>
+<script type="text/babel" src="../mockup-primitives.jsx"></script>
+<script type="text/babel" src="../mockup-screens-owner.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const Canvas = window.DesignCanvas;
+const Section = window.DCSection;
+const Artboard = window.DCArtboard;
+
+function App() {
+  return (
+    <Canvas>
+      <Section id="own-onboard" title="Owner · Onboarding" subtitle="First run · pick market · activate Iris">
+        <Artboard id="own-splash" label="01 · Splash" sublabel="Universal entry" width={324} height={684}><IPhone w={324} h={684}><S_Splash/></IPhone></Artboard>
+        <Artboard id="own-welcome" label="02 · Hook" sublabel="Founder offer" width={324} height={684}><IPhone w={324} h={684}><S_Welcome/></IPhone></Artboard>
+        <Artboard id="own-otp" label="03 · OTP" sublabel="SMS verify" width={324} height={684}><IPhone w={324} h={684}><S_OTP/></IPhone></Artboard>
+        <Artboard id="own-market" label="04 · Pick market" sublabel="ZIP + radius" width={324} height={684}><IPhone w={324} h={684}><S_PickMarket/></IPhone></Artboard>
+        <Artboard id="own-iris" label="05 · Activate Iris" sublabel="AI agent setup" width={324} height={684}><IPhone w={324} h={684}><S_AISetup/></IPhone></Artboard>
+        <Artboard id="own-login" label="06 · Login" sublabel="Returning user · Face ID" width={324} height={684}><IPhone w={324} h={684}><S_Login/></IPhone></Artboard>
+      </Section>
+
+      <Section id="own-daily" title="Owner · Daily home" subtitle="What you see when you open the app">
+        <Artboard id="own-dash" label="07 · Dashboard" sublabel="Revenue + funnel" width={324} height={684}><IPhone w={324} h={684}><S_Dashboard/></IPhone></Artboard>
+        <Artboard id="own-leads" label="08 · Lead inbox" sublabel="All inbound calls" width={324} height={684}><IPhone w={324} h={684}><S_LeadInbox/></IPhone></Artboard>
+        <Artboard id="own-jobs" label="09 · Jobs list" sublabel="Pipeline view" width={324} height={684}><IPhone w={324} h={684}><S_Jobs/></IPhone></Artboard>
+      </Section>
+
+      <Section id="own-live" title="Owner · Live AI dispatch" subtitle="The hero flow — call → dispatch → on-site">
+        <Artboard id="own-disp" label="10 · Dispatch map" sublabel="Live alert + tech tracking" width={324} height={684} focus><IPhone w={324} h={684}><S_DispatchMap/></IPhone></Artboard>
+        <Artboard id="own-lead" label="11 · Lead detail" sublabel="Live transcript streaming" width={324} height={684}><IPhone w={324} h={684}><S_LeadDetail/></IPhone></Artboard>
+        <Artboard id="own-take" label="12 · Take over" sublabel="Manual override sheet" width={324} height={684}><IPhone w={324} h={684}><S_Takeover/></IPhone></Artboard>
+        <Artboard id="own-job" label="13 · Job detail" sublabel="Live progress tracker" width={324} height={684}><IPhone w={324} h={684}><S_JobDetail/></IPhone></Artboard>
+      </Section>
+    </Canvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

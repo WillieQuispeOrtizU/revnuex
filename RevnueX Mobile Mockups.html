@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>RevnueX · App Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="mockup-tokens.css"/>
+<style>
+body { background: #f0eee9; }
+.toolbar {
+  position: fixed; top: 16px; right: 16px; z-index: 1000;
+  display: flex; gap: 8px;
+  padding: 6px; background: rgba(255,255,255,0.95);
+  border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  backdrop-filter: blur(8px);
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 12px;
+}
+.toolbar button {
+  padding: 6px 12px; border-radius: 8px;
+  background: transparent; border: none; cursor: pointer;
+  font-size: 12px; font-weight: 600; color: #5a4a2a;
+}
+.toolbar button.active { background: #c96442; color: white; }
+.toolbar button:hover:not(.active) { background: rgba(0,0,0,0.05); }
+</style>
+</head>
+<body class="no-anno">
+
+<div class="toolbar">
+  <button id="toggleAnno">Show notes</button>
+  <button id="toggleNav" class="active">Owner</button>
+</div>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="mockup-primitives.jsx"></script>
+<script type="text/babel" src="mockup-screens-owner.jsx"></script>
+<script type="text/babel" src="mockup-screens-tech.jsx"></script>
+<script type="text/babel" src="mockup-screens-customer.jsx"></script>
+<script type="text/babel" src="mockup-screens-states.jsx"></script>
+<script type="text/babel" src="mockup-sitemap.jsx"></script>
+<script type="text/babel" src="mockup-screens-settings.jsx"></script>
+<script type="text/babel" src="mockup-animation-specs.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+// Components like DesignCanvas, DCSection, DCArtboard, PostIt, IPhone, S_*
+// are attached to window by their respective files. Pull them under
+// non-colliding local aliases (using `const DesignCanvas = ...` would
+// redeclare the global function in the same scope).
+const Canvas    = window.DesignCanvas;
+const Section   = window.DCSection;
+const Artboard  = window.DCArtboard;
+const Sticky    = window.DCPostIt;
+
+// Helper for an iPhone-sized artboard
+function PhoneAB({ id, label, sub, focus, children }) {
+  return (
+    <Artboard id={id} label={label} sublabel={sub} width={324} height={684} focus={focus}>
+      <IPhone w={324} h={684}>{children}</IPhone>
+    </Artboard>
+  );
+}
+
+function App() {
+  return (
+    <Canvas>
+
+      {/* ── Title section ─────────────────────────────────── */}
+      <Section id="cover" title="RevnueX · Mobile App Mockups" subtitle="Owner + Tech + Customer flows · April 2025">
+        <Artboard id="cover-card" label="Overview" width={520} height={684}>
+          <div style={{
+            width:'100%', height:'100%', borderRadius:24,
+            background:'#0A0B0D', color:'#F5F6F8',
+            padding:48, display:'flex', flexDirection:'column',
+            fontFamily:'Geist, system-ui, sans-serif',
+            position:'relative', overflow:'hidden',
+          }}>
+            <div style={{position:'absolute',top:-100,right:-100,width:400,height:400,borderRadius:'50%',background:'radial-gradient(circle, rgba(255,106,26,0.25), transparent 70%)'}}/>
+            <div style={{display:'flex',alignItems:'center',gap:14,marginBottom:36,position:'relative'}}>
+              <Mark size={48}/>
+              <div>
+                <div style={{fontSize:11,letterSpacing:'0.15em',color:'#FF9F61',fontFamily:'Geist Mono'}}>REVNUEX</div>
+                <div style={{fontSize:22,fontWeight:700,letterSpacing:'-0.02em'}}>Mobile App Mockups</div>
+              </div>
+            </div>
+            <div style={{fontSize:42,fontWeight:800,letterSpacing:'-0.03em',lineHeight:1.05,marginBottom:24,position:'relative'}}>
+              Hi-fi screens for<br/>
+              <span style={{color:'#FF6A1A'}}>three personas.</span>
+            </div>
+            <div style={{fontSize:14,color:'#B5BCC6',lineHeight:1.6,marginBottom:'auto',position:'relative'}}>
+              Pan and zoom this canvas to explore the entire RevnueX product surface — Owner dispatch app, Tech field app, and Customer PWA. Drag artboards to rearrange. Click any screen to focus.
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:14,marginTop:24,position:'relative'}}>
+              {[
+                ['Owner','iOS','Dispatch + revenue'],
+                ['Tech','Android','Field operations'],
+                ['Customer','PWA','Booking + pay'],
+              ].map(([p,plat,desc])=>(
+                <div key={p} style={{padding:14,background:'rgba(255,255,255,0.03)',borderRadius:12,border:'1px solid rgba(255,255,255,0.08)'}}>
+                  <div style={{fontSize:14,fontWeight:700}}>{p}</div>
+                  <div style={{fontSize:9,fontFamily:'Geist Mono',color:'#FF9F61',letterSpacing:'0.1em',textTransform:'uppercase',marginTop:2}}>{plat}</div>
+                  <div style={{fontSize:11,color:'#6B7280',marginTop:6}}>{desc}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{marginTop:24,paddingTop:16,borderTop:'1px solid rgba(255,255,255,0.08)',fontSize:10,color:'#6B7280',fontFamily:'Geist Mono',letterSpacing:'0.08em',display:'flex',justifyContent:'space-between'}}>
+              <span>v0.1 · NEEDS REVIEW</span>
+              <span>~55 SCREENS · 4 FLOWS</span>
+            </div>
+          </div>
+        </Artboard>
+      </Section>
+
+      {/* ── Owner: Onboarding ─────────────────────────────── */}
+      <Section id="own-onboard" title="Owner · Onboarding" subtitle="First run · pick market · activate Iris">
+        <Artboard id="own-splash" label="01 · Splash" sublabel="Universal entry" width={324} height={684}><IPhone w={324} h={684}><S_Splash/></IPhone></Artboard>
+        <Artboard id="own-welcome" label="02 · Hook" sublabel="Founder offer" width={324} height={684}><IPhone w={324} h={684}><S_Welcome/></IPhone></Artboard>
+        <Artboard id="own-otp" label="03 · OTP" sublabel="SMS verify" width={324} height={684}><IPhone w={324} h={684}><S_OTP/></IPhone></Artboard>
+        <Artboard id="own-market" label="04 · Pick market" sublabel="ZIP + radius" width={324} height={684}><IPhone w={324} h={684}><S_PickMarket/></IPhone></Artboard>
+        <Artboard id="own-iris" label="05 · Activate Iris" sublabel="AI agent setup" width={324} height={684}><IPhone w={324} h={684}><S_AISetup/></IPhone></Artboard>
+        <Artboard id="own-login" label="06 · Login" sublabel="Returning user · Face ID" width={324} height={684}><IPhone w={324} h={684}><S_Login/></IPhone></Artboard>
+      </Section>
+
+      {/* ── Owner: Daily ──────────────────────────────────── */}
+      <Section id="own-daily" title="Owner · Daily home" subtitle="What you see when you open the app">
+        <Artboard id="own-dash" label="07 · Dashboard" sublabel="Revenue + funnel" width={324} height={684}><IPhone w={324} h={684}><S_Dashboard/></IPhone></Artboard>
+        <Artboard id="own-leads" label="08 · Lead inbox" sublabel="All inbound calls" width={324} height={684}><IPhone w={324} h={684}><S_LeadInbox/></IPhone></Artboard>
+        <Artboard id="own-jobs" label="09 · Jobs list" sublabel="Pipeline view" width={324} height={684}><IPhone w={324} h={684}><S_Jobs/></IPhone></Artboard>
+      </Section>
+
+      {/* ── Owner: Live AI Hero Flow ──────────────────────── */}
+      <Section id="own-live" title="Owner · Live AI dispatch" subtitle="The hero flow — call → dispatch → on-site">
+        <Artboard id="own-disp" label="10 · Dispatch map" sublabel="Live alert + tech tracking" width={324} height={684} focus><IPhone w={324} h={684}><S_DispatchMap/></IPhone></Artboard>
+        <Artboard id="own-lead" label="11 · Lead detail" sublabel="Live transcript streaming" width={324} height={684}><IPhone w={324} h={684}><S_LeadDetail/></IPhone></Artboard>
+        <Artboard id="own-take" label="12 · Take over" sublabel="Manual override sheet" width={324} height={684}><IPhone w={324} h={684}><S_Takeover/></IPhone></Artboard>
+        <Artboard id="own-job" label="13 · Job detail" sublabel="Live progress tracker" width={324} height={684}><IPhone w={324} h={684}><S_JobDetail/></IPhone></Artboard>
+      </Section>
+
+      {/* ── Tech: Onboarding + queue ──────────────────────── */}
+      <Section id="tech-start" title="Tech · Day start" subtitle="Android · glove-friendly · big tap targets">
+        <Artboard id="t-login" label="14 · Login" sublabel="Clock-in preview" width={324} height={684}><APhone w={324} h={684}><T_Login/></APhone></Artboard>
+        <Artboard id="t-today" label="15 · Today queue" sublabel="4 stops · live job pinned" width={324} height={684}><APhone w={324} h={684}><T_Today/></APhone></Artboard>
+        <Artboard id="t-empty" label="16 · Empty state" sublabel="No jobs yet" width={324} height={684}><APhone w={324} h={684}><T_Empty/></APhone></Artboard>
+      </Section>
+
+      {/* ── Tech: On-site flow ────────────────────────────── */}
+      <Section id="tech-job" title="Tech · On-site flow" subtitle="The job from arrival to payment">
+        <Artboard id="t-route" label="17 · En route" sublabel="Turn-by-turn + ETA" width={324} height={684}><APhone w={324} h={684}><T_EnRoute/></APhone></Artboard>
+        <Artboard id="t-onsite" label="18 · On-site" sublabel="Job hub · steps tracker" focus width={324} height={684}><APhone w={324} h={684}><T_OnSite/></APhone></Artboard>
+        <Artboard id="t-diag" label="19 · Voice diagnosis" sublabel="Iris transcribes" width={324} height={684}><APhone w={324} h={684}><T_Diagnose/></APhone></Artboard>
+        <Artboard id="t-photo" label="20 · Photo capture" sublabel="Before/after grid" width={324} height={684}><APhone w={324} h={684}><T_Photo/></APhone></Artboard>
+        <Artboard id="t-est" label="21 · Build estimate" sublabel="Iris-suggested lines" width={324} height={684}><APhone w={324} h={684}><T_Estimate/></APhone></Artboard>
+        <Artboard id="t-sig" label="22 · Customer sign" sublabel="Hand-phone moment" width={324} height={684}><APhone w={324} h={684}><T_Signature/></APhone></Artboard>
+      </Section>
+
+      {/* ── Tech: Payment ─────────────────────────────────── */}
+      <Section id="tech-pay" title="Tech · Payment" subtitle="Tap-to-pay or invoice link">
+        <Artboard id="t-pay" label="23 · Collect payment" sublabel="3 method options" width={324} height={684}><APhone w={324} h={684}><T_Payment/></APhone></Artboard>
+        <Artboard id="t-tap" label="24 · Tap to pay" sublabel="NFC ring animation" width={324} height={684}><APhone w={324} h={684}><T_TapPay/></APhone></Artboard>
+        <Artboard id="t-success" label="25 · Paid" sublabel="Earnings + next stop" width={324} height={684}><APhone w={324} h={684}><T_PaySuccess/></APhone></Artboard>
+      </Section>
+
+      {/* ── Tech: Day end + profile ──────────────────────── */}
+      <Section id="tech-end" title="Tech · Day end + profile" subtitle="Wrap up + identity">
+        <Artboard id="t-eod" label="26 · End of day" sublabel="Summary + reviews" width={324} height={684}><APhone w={324} h={684}><T_EndOfDay/></APhone></Artboard>
+        <Artboard id="t-me" label="27 · Account" sublabel="Schedule · inventory · pay" width={324} height={684}><APhone w={324} h={684}><T_Profile/></APhone></Artboard>
+      </Section>
+
+      {/* ── Customer: Booking flow ────────────────────────── */}
+      <Section id="cust-book" title="Customer · Book a visit (PWA)" subtitle="No download · text-link entry · mobile web">
+        <Artboard id="c-land" label="28 · Landing" sublabel="From SMS · describe issue" width={324} height={684}><IPhone w={324} h={684}><C_Landing/></IPhone></Artboard>
+        <Artboard id="c-time" label="29 · Pick window" sublabel="Same-day slots" width={324} height={684}><IPhone w={324} h={684}><C_PickTime/></IPhone></Artboard>
+        <Artboard id="c-conf" label="30 · Confirm" sublabel="Address + phone" width={324} height={684}><IPhone w={324} h={684}><C_Confirm/></IPhone></Artboard>
+        <Artboard id="c-booked" label="31 · Booked" sublabel="Tech assigned" width={324} height={684}><IPhone w={324} h={684}><C_Booked/></IPhone></Artboard>
+      </Section>
+
+      {/* ── Customer: Day-of ──────────────────────────────── */}
+      <Section id="cust-day" title="Customer · Day-of" subtitle="Tracking → estimate → pay → review">
+        <Artboard id="c-sms" label="32 · SMS push" sublabel="Lockscreen notifs" width={324} height={684}><IPhone w={324} h={684}><C_SMS/></IPhone></Artboard>
+        <Artboard id="c-track" label="33 · Live track" sublabel="Uber-style ETA" focus width={324} height={684}><IPhone w={324} h={684}><C_Tracking/></IPhone></Artboard>
+        <Artboard id="c-est" label="34 · Estimate" sublabel="Approve work + price" width={324} height={684}><IPhone w={324} h={684}><C_Estimate/></IPhone></Artboard>
+        <Artboard id="c-pay" label="35 · Pay" sublabel="Apple Pay / card / ACH" width={324} height={684}><IPhone w={324} h={684}><C_Pay/></IPhone></Artboard>
+        <Artboard id="c-rcpt" label="36 · Receipt + review" sublabel="Rate Jose · save warranty" width={324} height={684}><IPhone w={324} h={684}><C_Receipt/></IPhone></Artboard>
+      </Section>
+
+      {/* ── Owner: Settings + Account ────────────────────── */}
+      <Section id="own-settings" title="Owner · Settings + account" subtitle="Configure Iris, team, billing, integrations">
+        <Artboard id="set-home" label="49 · Settings home" sublabel="Master menu" width={324} height={684}><IPhone w={324} h={684}><S_Settings/></IPhone></Artboard>
+        <Artboard id="set-iris" label="50 · Iris settings" sublabel="Voice + behavior" width={324} height={684}><IPhone w={324} h={684}><S_IrisSettings/></IPhone></Artboard>
+        <Artboard id="set-team" label="51 · Team" sublabel="Roster + invites" width={324} height={684}><IPhone w={324} h={684}><S_Team/></IPhone></Artboard>
+        <Artboard id="set-bill" label="52 · Billing" sublabel="Plan + usage + invoices" width={324} height={684}><IPhone w={324} h={684}><S_Billing/></IPhone></Artboard>
+        <Artboard id="set-int" label="53 · Integrations" sublabel="QuickBooks, Stripe, +5" width={324} height={684}><IPhone w={324} h={684}><S_Integrations/></IPhone></Artboard>
+        <Artboard id="set-notif" label="54 · Notifications" sublabel="Push/SMS/email matrix" width={324} height={684}><IPhone w={324} h={684}><S_NotifPrefs/></IPhone></Artboard>
+        <Artboard id="set-hours" label="55 · Hours + area" sublabel="Schedule + service map" width={324} height={684}><IPhone w={324} h={684}><S_Hours/></IPhone></Artboard>
+      </Section>
+
+      {/* ── Animation specs ──────────────────────────────── */}
+      <Section id="motion" title="Motion design" subtitle="Timings, easings, hero moments · live demos">
+        <Artboard id="motion-spec" label="56 · Motion spec" sublabel="Engineering handoff" width={1400} height={1500}>
+          <AnimationSpecs/>
+        </Artboard>
+      </Section>
+
+      {/* ── Sitemap ──────────────────────────────────────── */}
+      <Section id="sitemap" title="Sitemap" subtitle="All 47 screens at a glance · cross-persona handoffs in dashed lines">
+        <Artboard id="sitemap-full" label="48 · IA diagram" sublabel="Full product surface" width={1800} height={1100}>
+          <Sitemap/>
+        </Artboard>
+      </Section>
+
+      {/* ── States catalog ────────────────────────────────── */}
+      <Section id="states-empty" title="States · Empty" subtitle="When there's nothing yet">
+        <Artboard id="st-leads" label="37 · No leads" sublabel="Owner inbox · quiet morning" width={324} height={684}><IPhone w={324} h={684}><ST_EmptyLeads/></IPhone></Artboard>
+        <Artboard id="st-earn" label="38 · No earnings" sublabel="Tech · pre first job" width={324} height={684}><APhone w={324} h={684}><ST_EmptyEarnings/></APhone></Artboard>
+      </Section>
+
+      <Section id="states-load" title="States · Loading" subtitle="Skeletons + Iris thinking">
+        <Artboard id="st-load1" label="39 · Skeleton list" sublabel="Shimmer pattern" width={324} height={684}><IPhone w={324} h={684}><ST_LoadingDispatch/></IPhone></Artboard>
+        <Artboard id="st-load2" label="40 · Iris thinking" sublabel="AI processing state" width={324} height={684}><IPhone w={324} h={684}><ST_LoadingIris/></IPhone></Artboard>
+      </Section>
+
+      <Section id="states-err" title="States · Error" subtitle="When things break">
+        <Artboard id="st-offline" label="41 · No connection" sublabel="Offline · queued sync" width={324} height={684}><APhone w={324} h={684}><ST_NoConnection/></APhone></Artboard>
+        <Artboard id="st-decline" label="42 · Card declined" sublabel="Payment failure" width={324} height={684}><APhone w={324} h={684}><ST_PaymentFailed/></APhone></Artboard>
+      </Section>
+
+      <Section id="states-perm" title="States · Permissions" subtitle="iOS / Android system prompts">
+        <Artboard id="st-perm-loc" label="43 · Location" sublabel="Native iOS sheet" width={324} height={684}><IPhone w={324} h={684}><ST_PermLocation/></IPhone></Artboard>
+        <Artboard id="st-perm-notif" label="44 · Notifications" sublabel="Pre-prompt screen" width={324} height={684}><IPhone w={324} h={684}><ST_PermNotif/></IPhone></Artboard>
+      </Section>
+
+      <Section id="states-success" title="States · Success + feedback" subtitle="Wins + inline toasts">
+        <Artboard id="st-paid" label="45 · Big win" sublabel="Paid moment · confetti" width={324} height={684}><APhone w={324} h={684}><ST_SuccessPaid/></APhone></Artboard>
+        <Artboard id="st-toasts" label="46 · Toast variants" sublabel="Success/info/warn/error" width={324} height={684}><IPhone w={324} h={684}><ST_Toasts/></IPhone></Artboard>
+        <Artboard id="st-push" label="47 · Push grid" sublabel="Lockscreen samples" width={324} height={684}><IPhone w={324} h={684}><ST_PushGrid/></IPhone></Artboard>
+      </Section>
+
+      {/* ── Notes ─────────────────────────────────────────── */}
+      <Section id="notes" title="Notes for review" subtitle="Open questions for Diego">        <Artboard id="postit-1" label="" width={260} height={260}>
+          <Sticky rotation={-2.4}>
+            <strong>Hero screen:</strong> "Live dispatch map" is the moment that sells the product. Iris is on a call, the lead just appeared as a pulsing pin, and you can dispatch Jose in one tap. This is the screen we should screenshot for the website.
+          </Sticky>
+        </Artboard>
+        <Artboard id="postit-2" label="" width={260} height={260}>
+          <Sticky rotation={1.8} color="#bbe5fc">
+            <strong>Open question:</strong> the "Founder Program · 3 of 10 left" hook on welcome — should we use real scarcity (per-city) or remove? Feels punchy but borderline manipulative if untrue.
+          </Sticky>
+        </Artboard>
+        <Artboard id="postit-3" label="" width={260} height={260}>
+          <Sticky rotation={-0.8} color="#ffd4d4">
+            <strong>Coming next:</strong> error/empty states catalog, push notification spec, settings + billing screens for owner. Customer PWA flow shipped (8 screens) — review the live tracking screen first.
+          </Sticky>
+        </Artboard>
+      </Section>
+
+    </Canvas>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
+
+// Annotation toggle
+const t = document.getElementById('toggleAnno');
+t.addEventListener('click', () => {
+  document.body.classList.toggle('no-anno');
+  t.textContent = document.body.classList.contains('no-anno') ? 'Show notes' : 'Hide notes';
+});
+</script>
+</body>
+</html>

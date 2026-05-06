@@ -1,0 +1,122 @@
+/* RevnueX HVAC Near Me Now — Design Tokens
+   Dark-first. Ember as signal only. */
+
+:root {
+  /* ── Surfaces (dark-first) ── */
+  --bg-0: #0A0B0D;        /* app background, deepest */
+  --bg-1: #111317;        /* cards, sheets */
+  --bg-2: #181B20;        /* elevated surface */
+  --bg-3: #20242A;        /* hover / pressed */
+  --line: #2A2F36;        /* hairlines */
+  --line-soft: #1E2228;
+
+  /* ── Ink ── */
+  --ink-0: #F4F5F7;       /* primary text */
+  --ink-1: #B6BDC7;       /* secondary text */
+  --ink-2: #7B838E;       /* tertiary / hints */
+  --ink-3: #4A525C;       /* disabled */
+
+  /* ── Ember (signal: action, urgency, active) ── */
+  --ember-50:  #FFF1E8;
+  --ember-100: #FFD9BF;
+  --ember-300: #FF9F61;
+  --ember-500: #FF6A1A;   /* primary action, urgent state */
+  --ember-600: #E5560B;
+  --ember-700: #B83F03;
+  --ember-glow: 0 0 0 4px rgba(255, 106, 26, 0.18);
+
+  /* ── Status (used sparingly) ── */
+  --ok:    #2BD27A;       /* booked, paid, completed */
+  --warn:  #FFC542;       /* pending, soon */
+  --hot:   #FF3B5C;       /* missed call, SLA breach */
+  --info:  #4FA8FF;       /* AI / automation */
+
+  /* ── Map / surfaces ── */
+  --map-bg: #0E1115;
+  --map-road: #1A1F26;
+  --map-water: #0A1419;
+  --map-park: #11261A;
+
+  /* ── Type ── */
+  --font-display: 'Geist', 'Inter', -apple-system, system-ui, sans-serif;
+  --font-body:    'Geist', 'Inter', -apple-system, system-ui, sans-serif;
+  --font-mono:    'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  /* ── Radii ── */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ── Spacing scale (4px base) ── */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+
+  /* ── Shadows ── */
+  --shadow-card: 0 1px 0 rgba(255,255,255,0.04) inset, 0 8px 24px rgba(0,0,0,0.45);
+  --shadow-pop:  0 24px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06);
+  --shadow-ember: 0 8px 30px rgba(255, 106, 26, 0.32);
+
+  /* ── Motion ── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+  --dur-slow: 420ms;
+}
+
+/* ── Reset / base ── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Type scale ── */
+.t-display { font-family: var(--font-display); font-weight: 700; font-size: 56px; line-height: 1.05; letter-spacing: -0.02em; }
+.t-h1      { font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; }
+.t-h2      { font-family: var(--font-display); font-weight: 650; font-size: 28px; line-height: 1.15; letter-spacing: -0.015em; }
+.t-h3      { font-family: var(--font-display); font-weight: 600; font-size: 20px; line-height: 1.25; letter-spacing: -0.01em; }
+.t-body    { font-family: var(--font-body); font-weight: 400; font-size: 15px; line-height: 1.55; letter-spacing: -0.005em; }
+.t-body-sm { font-family: var(--font-body); font-weight: 400; font-size: 13px; line-height: 1.5; }
+.t-caption { font-family: var(--font-body); font-weight: 500; font-size: 12px; line-height: 1.4; letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink-2); }
+.t-mono    { font-family: var(--font-mono); font-size: 13px; letter-spacing: -0.01em; }
+
+/* ── Pulse keyframes (used everywhere a thing is "live") ── */
+@keyframes pulse-ember {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 106, 26, 0.55); }
+  50%      { box-shadow: 0 0 0 10px rgba(255, 106, 26, 0); }
+}
+@keyframes pulse-ok {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(43, 210, 122, 0.5); }
+  50%      { box-shadow: 0 0 0 8px rgba(43, 210, 122, 0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.03); }
+}
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

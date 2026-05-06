@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>RevnueX · Mockup Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 48px;
+    background: #f0eee9;
+    font-family: 'Geist', -apple-system, system-ui, sans-serif;
+    color: #0A0B0D;
+    min-height: 100vh;
+  }
+  .header {
+    max-width: 1100px; margin: 0 auto 48px;
+  }
+  .eyebrow {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: #FF6A1A; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 56px; font-weight: 800;
+    letter-spacing: -0.03em; line-height: 1.05;
+    margin: 0 0 16px;
+  }
+  .sub {
+    font-size: 17px; color: #6B7280;
+    line-height: 1.55; max-width: 640px;
+  }
+  .grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    display: flex; flex-direction: column;
+    gap: 10px;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-color: rgba(0,0,0,0.12);
+  }
+  .card .num {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px; letter-spacing: 0.1em;
+    color: #FF6A1A; font-weight: 600;
+  }
+  .card .title {
+    font-size: 22px; font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .card .desc {
+    font-size: 13px; color: #6B7280;
+    line-height: 1.5; margin-top: 4px;
+  }
+  .card .meta {
+    margin-top: auto; padding-top: 14px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px; letter-spacing: 0.08em;
+    color: #9CA3AF; text-transform: uppercase;
+    display: flex; justify-content: space-between;
+    border-top: 1px dashed rgba(0,0,0,0.08);
+  }
+  .card .accent {
+    position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+  }
+  .footer {
+    max-width: 1100px; margin: 48px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    display: flex; justify-content: space-between;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px; color: #9CA3AF;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .master {
+    max-width: 1100px; margin: 0 auto 18px;
+    padding: 16px 20px;
+    background: #0A0B0D; color: #fff;
+    border-radius: 12px;
+    display: flex; justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  .master:hover { background: #1a1b1d; }
+  .master .label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px; letter-spacing: 0.1em;
+    color: #FF9F61; text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="eyebrow">RevnueX · Mobile App Mockups</div>
+  <h1>Hi-fi screens, split for review.</h1>
+  <p class="sub">The full canvas was hitting context limits in the preview. Each section below opens as its own focused file — pan/zoom inside, click any screen to focus, hit Show notes for inline annotations.</p>
+</div>
+
+<a class="master" href="RevnueX Mobile Mockups.html">
+  <div>
+    <div class="label">Master file (heavy)</div>
+    <div style="font-weight:600;">All sections in one canvas</div>
+  </div>
+  <span style="color:#FF9F61;">→</span>
+</a>
+
+<div class="grid">
+
+  <a class="card" href="mobile/01 Owner.html">
+    <div class="accent" style="background:#FF6A1A;"></div>
+    <div class="num">01 · OWNER</div>
+    <div class="title">Owner app</div>
+    <div class="desc">iOS dispatch app. Onboarding, daily home, and the live AI dispatch hero flow.</div>
+    <div class="meta"><span>13 SCREENS</span><span>iOS</span></div>
+  </a>
+
+  <a class="card" href="mobile/02 Tech.html">
+    <div class="accent" style="background:#10B981;"></div>
+    <div class="num">02 · TECH</div>
+    <div class="title">Tech app</div>
+    <div class="desc">Android field app. Day start, on-site flow, payment, and end-of-day wrap.</div>
+    <div class="meta"><span>14 SCREENS</span><span>ANDROID</span></div>
+  </a>
+
+  <a class="card" href="mobile/03 Customer.html">
+    <div class="accent" style="background:#3B82F6;"></div>
+    <div class="num">03 · CUSTOMER</div>
+    <div class="title">Customer PWA</div>
+    <div class="desc">No-install web flow. Booking, day-of tracking, estimate approval, payment.</div>
+    <div class="meta"><span>9 SCREENS</span><span>PWA</span></div>
+  </a>
+
+  <a class="card" href="mobile/04 States.html">
+    <div class="accent" style="background:#A855F7;"></div>
+    <div class="num">04 · STATES</div>
+    <div class="title">States catalog</div>
+    <div class="desc">Empty, loading, error, permission, success, and push variants across all three apps.</div>
+    <div class="meta"><span>11 STATES</span><span>ALL</span></div>
+  </a>
+
+  <a class="card" href="mobile/05 Settings.html">
+    <div class="accent" style="background:#F59E0B;"></div>
+    <div class="num">05 · SETTINGS</div>
+    <div class="title">Owner settings</div>
+    <div class="desc">Iris config, team roster, billing, integrations, notifications, hours + service area.</div>
+    <div class="meta"><span>7 SCREENS</span><span>iOS</span></div>
+  </a>
+
+  <a class="card" href="mobile/06 Sitemap.html">
+    <div class="accent" style="background:#EC4899;"></div>
+    <div class="num">06 · IA + MOTION</div>
+    <div class="title">Sitemap + motion</div>
+    <div class="desc">Full screen index with cross-persona handoffs, plus animation specs and timings.</div>
+    <div class="meta"><span>2 ARTBOARDS</span><span>HANDOFF</span></div>
+  </a>
+
+</div>
+
+<div class="footer">
+  <span>v0.1 · NEEDS REVIEW</span>
+  <span>~55 SCREENS · 4 FLOWS</span>
+</div>
+
+</body>
+</html>

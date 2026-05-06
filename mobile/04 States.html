@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>RevnueX · States Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../mockup-tokens.css"/>
+<style>body { background: #f0eee9; }</style>
+</head>
+<body>
+
+<div id="root"></div>
+<script src="_shared.js"></script>
+<script>window.__mockupToolbar('States catalog');</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="../design-canvas.jsx"></script>
+<script type="text/babel" src="../mockup-primitives.jsx"></script>
+<script type="text/babel" src="../mockup-screens-states.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const Canvas = window.DesignCanvas;
+const Section = window.DCSection;
+const Artboard = window.DCArtboard;
+
+function App() {
+  return (
+    <Canvas>
+      <Section id="states-empty" title="States · Empty" subtitle="When there's nothing yet">
+        <Artboard id="st-leads" label="37 · No leads" sublabel="Owner inbox · quiet morning" width={324} height={684}><IPhone w={324} h={684}><ST_EmptyLeads/></IPhone></Artboard>
+        <Artboard id="st-earn" label="38 · No earnings" sublabel="Tech · pre first job" width={324} height={684}><APhone w={324} h={684}><ST_EmptyEarnings/></APhone></Artboard>
+      </Section>
+
+      <Section id="states-load" title="States · Loading" subtitle="Skeletons + Iris thinking">
+        <Artboard id="st-load1" label="39 · Skeleton list" sublabel="Shimmer pattern" width={324} height={684}><IPhone w={324} h={684}><ST_LoadingDispatch/></IPhone></Artboard>
+        <Artboard id="st-load2" label="40 · Iris thinking" sublabel="AI processing state" width={324} height={684}><IPhone w={324} h={684}><ST_LoadingIris/></IPhone></Artboard>
+      </Section>
+
+      <Section id="states-err" title="States · Error" subtitle="When things break">
+        <Artboard id="st-offline" label="41 · No connection" sublabel="Offline · queued sync" width={324} height={684}><APhone w={324} h={684}><ST_NoConnection/></APhone></Artboard>
+        <Artboard id="st-decline" label="42 · Card declined" sublabel="Payment failure" width={324} height={684}><APhone w={324} h={684}><ST_PaymentFailed/></APhone></Artboard>
+      </Section>
+
+      <Section id="states-perm" title="States · Permissions" subtitle="iOS / Android system prompts">
+        <Artboard id="st-perm-loc" label="43 · Location" sublabel="Native iOS sheet" width={324} height={684}><IPhone w={324} h={684}><ST_PermLocation/></IPhone></Artboard>
+        <Artboard id="st-perm-notif" label="44 · Notifications" sublabel="Pre-prompt screen" width={324} height={684}><IPhone w={324} h={684}><ST_PermNotif/></IPhone></Artboard>
+      </Section>
+
+      <Section id="states-success" title="States · Success + feedback" subtitle="Wins + inline toasts">
+        <Artboard id="st-paid" label="45 · Big win" sublabel="Paid moment · confetti" width={324} height={684}><APhone w={324} h={684}><ST_SuccessPaid/></APhone></Artboard>
+        <Artboard id="st-toasts" label="46 · Toast variants" sublabel="Success/info/warn/error" width={324} height={684}><IPhone w={324} h={684}><ST_Toasts/></IPhone></Artboard>
+        <Artboard id="st-push" label="47 · Push grid" sublabel="Lockscreen samples" width={324} height={684}><IPhone w={324} h={684}><ST_PushGrid/></IPhone></Artboard>
+      </Section>
+    </Canvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

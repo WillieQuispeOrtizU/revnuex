@@ -1,0 +1,318 @@
+/* Layout for spec pages: PRD left, mockup right */
+.slide {
+  width: 1920px;
+  height: 1080px;
+  background: var(--bg-0);
+  color: var(--ink-0);
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.slide.full {
+  grid-template-columns: 1fr;
+}
+
+/* PRD column */
+.prd {
+  padding: 64px 64px 64px 80px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+
+.prd-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.prd-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ember-500);
+  letter-spacing: 0.04em;
+}
+
+.prd-section {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prd-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink-0);
+  margin: 0;
+}
+
+.prd-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--r-pill);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-1);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.prd-tag.ember {
+  color: var(--ember-300);
+  background: rgba(255, 106, 26, 0.08);
+  border-color: rgba(255, 106, 26, 0.25);
+}
+
+.prd-tag.info {
+  color: var(--info);
+  background: rgba(79, 168, 255, 0.08);
+  border-color: rgba(79, 168, 255, 0.25);
+}
+
+.prd-tag.ok {
+  color: var(--ok);
+  background: rgba(43, 210, 122, 0.08);
+  border-color: rgba(43, 210, 122, 0.25);
+}
+
+.prd-summary {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-1);
+  max-width: 620px;
+}
+
+.prd-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prd-block h4 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: 0;
+  font-weight: 500;
+}
+
+.prd-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prd-list li {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-1);
+  padding-left: 22px;
+  position: relative;
+}
+
+.prd-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 6px; height: 6px;
+  background: var(--ember-500);
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+.prd-list.ok li::before { background: var(--ok); }
+.prd-list.muted li::before { background: var(--ink-3); }
+
+.prd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+
+.prd-kv {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.prd-kv .k {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.prd-kv .v {
+  font-size: 14px;
+  color: var(--ink-0);
+  line-height: 1.4;
+}
+
+.prd-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  letter-spacing: 0.04em;
+}
+
+/* Mockup column */
+.mockup {
+  background:
+    radial-gradient(1200px 800px at 30% 20%, rgba(255,106,26,0.05), transparent 60%),
+    linear-gradient(180deg, #0E1115, #07090C);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mockup::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: -1px -1px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  pointer-events: none;
+}
+
+.mockup-stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+/* small annotation badge over the mockup */
+.anno {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(20, 23, 28, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  font-size: 12px;
+  color: var(--ink-1);
+  z-index: 2;
+  max-width: 220px;
+  line-height: 1.35;
+}
+.anno .dot {
+  width: 8px; height: 8px;
+  border-radius: 99px;
+  background: var(--ember-500);
+  flex-shrink: 0;
+  animation: pulse-ember 2s infinite;
+}
+.anno .num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ember-500);
+  letter-spacing: 0.05em;
+}
+
+/* Page chrome / header strip */
+.page-chrome {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  z-index: 5;
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.page-chrome .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-1);
+}
+.page-chrome .brand .mark {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--ember-500), var(--ember-700));
+  display: grid; place-items: center;
+  color: white; font-weight: 800; font-size: 12px;
+  font-family: var(--font-display);
+  box-shadow: var(--shadow-ember);
+}
+
+/* Section divider page */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 120px;
+  text-align: center;
+  background:
+    radial-gradient(800px 600px at 50% 40%, rgba(255,106,26,0.10), transparent 60%),
+    var(--bg-0);
+}
+
+.section-divider .num {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--ember-500);
+  letter-spacing: 0.2em;
+}
+
+.section-divider h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  max-width: 1400px;
+}
+
+.section-divider p {
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--ink-1);
+  max-width: 800px;
+  margin: 0;
+}
